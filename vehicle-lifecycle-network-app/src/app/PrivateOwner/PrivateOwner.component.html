@@ -136,7 +136,12 @@
                 <div class="form-group text-left">
                   <label for="contactDetails">contactDetails</label>
                   
-                      <textarea formControlName="contactDetails" class="form-control" rows="3"></textarea>
+                      <label for="mobilePhone">mobilePhone</label>
+                          <textarea formControlName="mobilePhone" class="form-control" rows="3"></textarea>
+                      <label for="homePhone">homePhone</label>
+                          <textarea formControlName="homePhone" class="form-control" rows="3"></textarea>
+                      <label for="address">address</label>
+                          <textarea formControlName="address" class="form-control" rows="3"></textarea>
                   
                 </div>
               
@@ -146,7 +151,10 @@
                 <div class="form-group text-left">
                   <label for="birthDetails">birthDetails</label>
                   
-                      <textarea formControlName="birthDetails" class="form-control" rows="3"></textarea>
+                      <label for="placeOfBirth">placeOfBirth</label>
+                          <textarea formControlName="placeOfBirth" class="form-control" rows="3"></textarea>
+                      <label for="dateOfBirth">dateOfBirth</label>
+                        <textarea formControlName="dateOfBirth" class="form-control" rows="3"></textarea>
                   
                 </div>
               
@@ -154,10 +162,12 @@
   
               
                 <div class="form-group text-left">
-                  <label for="deathDetails">deathDetails</label>
+                  <label for="placeOfDeath">deathDetails</label>
                   
-                      <textarea formControlName="deathDetails" class="form-control" rows="3"></textarea>
-                  
+                      <label for="placeOfDeath">placeOfDeath</label>
+                          <textarea formControlName="placeOfDeath" class="form-control" rows="3"></textarea>
+                      <label for="dateOfDeath">dateOfDeath</label>
+                          <textarea formControlName="dateOfDeath" class="form-control" rows="3"></textarea>                  
                 </div>
               
             
@@ -300,33 +310,36 @@
               </div>
             
               <div class="form-group text-left">
-                <label for="contactDetails">contactDetails</label>
+                <label for="mobilePhone">contactDetails</label>
   
                 
                   
-                    <textarea [ngModel]="contactDetails" formControlName="contactDetails" class="form-control" rows="3"></textarea>
+                    <textarea [ngModel]="mobilePhone" formControlName="mobilePhone" class="form-control" rows="3"></textarea>
+                    <textarea [ngModel]="homePhone" formControlName="homePhone" class="form-control" rows="3"></textarea>
+                    <textarea [ngModel]="address" formControlName="address" class="form-control" rows="3"></textarea>
+                
+  
+              </div>
+            
+              <div class="form-group text-left">
+                <label for="dateOfBirth">birthDetails</label>
+  
+                
+                  
+                    <textarea [ngModel]="dateOfBirth" formControlName="dateOfBirth" class="form-control" rows="3"></textarea>
+                    <textarea [ngModel]="placeofBirth" formControlName="placeofBirth" class="form-control" rows="3"></textarea>
                   
                 
   
               </div>
             
               <div class="form-group text-left">
-                <label for="birthDetails">birthDetails</label>
+                <label for="dateOfDeath">deathDetails</label>
   
                 
                   
-                    <textarea [ngModel]="birthDetails" formControlName="birthDetails" class="form-control" rows="3"></textarea>
-                  
-                
-  
-              </div>
-            
-              <div class="form-group text-left">
-                <label for="deathDetails">deathDetails</label>
-  
-                
-                  
-                    <textarea [ngModel]="deathDetails" formControlName="deathDetails" class="form-control" rows="3"></textarea>
+                    <textarea [ngModel]="placeOfDeath" formControlName="placeOfDeath" class="form-control" rows="3"></textarea>
+                    <textarea [ngModel]="dateOfDeath" formControlName="dateOfDeath" class="form-control" rows="3"></textarea>
                   
                 
   

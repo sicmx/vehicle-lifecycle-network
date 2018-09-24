@@ -1,3 +1,4 @@
+import { Address } from './../composer.base';
 /*
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,9 +40,13 @@ export class PrivateOwnerComponent implements OnInit {
   middleNames = new FormControl('', Validators.required);
   gender = new FormControl('', Validators.required);
   nationalities = new FormControl('', Validators.required);
-  contactDetails = new FormControl('', Validators.required);
-  birthDetails = new FormControl('', Validators.required);
-  deathDetails = new FormControl('', Validators.required);
+  mobilePhone = new FormControl('', Validators.required);
+  homePhone = new FormControl('', Validators.required);
+  address = new FormControl('', Validators.required);
+  dateofBirth = new FormControl('', Validators.required);
+  placeofBirth = new FormControl('', Validators.required);
+  dateofDeath = new FormControl('', Validators.required);
+  placeofDeath = new FormControl('', Validators.required);
 
 
   constructor(public servicePrivateOwner: PrivateOwnerService, fb: FormBuilder) {
@@ -53,9 +58,13 @@ export class PrivateOwnerComponent implements OnInit {
       middleNames: this.middleNames,
       gender: this.gender,
       nationalities: this.nationalities,
-      contactDetails: this.contactDetails,
-      birthDetails: this.birthDetails,
-      deathDetails: this.deathDetails
+      mobilePhone: this.mobilePhone,
+      homePhone: this.homePhone,
+      address: this.address,
+      dateofBirth: this.dateofBirth,
+      placeofBirth: this.placeofBirth,
+      dateofDeath: this.dateofDeath,
+      placeofDeath: this.placeofDeath
     });
   };
 
@@ -119,9 +128,13 @@ export class PrivateOwnerComponent implements OnInit {
       'middleNames': this.middleNames.value,
       'gender': this.gender.value,
       'nationalities': this.nationalities.value,
-      'contactDetails': this.contactDetails.value,
-      'birthDetails': this.birthDetails.value,
-      'deathDetails': this.deathDetails.value
+      'mobilePhone': this.mobilePhone.value,
+      'homePhone': this.homePhone.value,
+      'address': this.address.value,
+      'dateofBirth': this.dateofBirth.value,
+      'placeofBirth': this.placeofBirth.value,
+      'dateofDeath': this.dateofDeath.value,
+      'placeofDeath': this.placeofDeath.value
     };
 
     this.myForm.setValue({
@@ -132,9 +145,13 @@ export class PrivateOwnerComponent implements OnInit {
       'middleNames': null,
       'gender': null,
       'nationalities': null,
-      'contactDetails': null,
-      'birthDetails': null,
-      'deathDetails': null
+      'mobilePhone': null,
+      'homePhone': null,
+      'address': null,
+      'placeofBirth': null,
+      'dateofBirth': null,
+      'placeofDeath': null,
+      'dateofDeath': null
     });
 
     return this.servicePrivateOwner.addParticipant(this.participant)
@@ -149,10 +166,14 @@ export class PrivateOwnerComponent implements OnInit {
         'middleNames': null,
         'gender': null,
         'nationalities': null,
-        'contactDetails': null,
-        'birthDetails': null,
-        'deathDetails': null
-      });
+        'mobilePhone': null,
+        'homePhone': null,
+        'address': null,
+        'placeofBirth': null,
+        'dateofBirth': null,
+        'placeofDeath': null,
+        'dateofDeath': null
+        });
       this.loadAll(); 
     })
     .catch((error) => {
@@ -174,9 +195,13 @@ export class PrivateOwnerComponent implements OnInit {
       'middleNames': this.middleNames.value,
       'gender': this.gender.value,
       'nationalities': this.nationalities.value,
-      'contactDetails': this.contactDetails.value,
-      'birthDetails': this.birthDetails.value,
-      'deathDetails': this.deathDetails.value
+      'mobilePhone': this.mobilePhone.value,
+      'homePhone': this.homePhone.value,
+      'address': this.address.value,
+      'placeofBirth': this.placeofBirth.value,
+      'dateofBirth': this.dateofBirth.value,
+      'placeofDeath': this.placeofDeath.value,
+      'dateofDeath': this.dateofDeath.value
     };
 
     return this.servicePrivateOwner.updateParticipant(form.get('email').value, this.participant)
@@ -234,9 +259,13 @@ export class PrivateOwnerComponent implements OnInit {
         'middleNames': null,
         'gender': null,
         'nationalities': null,
-        'contactDetails': null,
-        'birthDetails': null,
-        'deathDetails': null
+        'mobilePhone': null,
+        'homePhone': null,
+        'address': null,
+        'dateofBirth': null,
+        'placeofBirth': null,
+        'dateofDeath': null,
+        'placeofDeath': null
       };
 
       if (result.email) {
@@ -281,22 +310,40 @@ export class PrivateOwnerComponent implements OnInit {
         formObject.nationalities = null;
       }
 
-      if (result.contactDetails) {
-        formObject.contactDetails = result.contactDetails;
+      if (result.contactDetails.mobilePhone) {
+        formObject.mobilePhone = result.contactDetails.mobilePhone;
       } else {
-        formObject.contactDetails = null;
+        formObject.mobilePhone = null;
       }
 
-      if (result.birthDetails) {
-        formObject.birthDetails = result.birthDetails;
+      if (result.contactDetails.homePhone) {
+        formObject.homePhone = result.contactDetails.homePhone;
       } else {
-        formObject.birthDetails = null;
+        formObject.homePhone = null;
       }
 
-      if (result.deathDetails) {
-        formObject.deathDetails = result.deathDetails;
+      if (result.contactDetails.address) {
+        formObject.address = result.contactDetails.address;
       } else {
-        formObject.deathDetails = null;
+        formObject.address = null;
+      }
+
+      if (result.birthDetails.dateOfBirth) {
+        formObject.dateofBirth = result.birthDetails.dateOfBirth;
+      } else {
+        formObject.dateofBirth = null;
+      }
+
+      if (result.deathDetails.placeOfDeath) {
+        formObject.placeofDeath = result.deathDetails.placeOfDeath;
+      } else {
+        formObject.placeofDeath = null;
+      }
+
+      if (result.deathDetails.dateOfDeath) {
+        formObject.dateofDeath = result.deathDetails.dateOfDeath;
+      } else {
+        formObject.dateofDeath = null;
       }
 
       this.myForm.setValue(formObject);
@@ -322,9 +369,13 @@ export class PrivateOwnerComponent implements OnInit {
       'middleNames': null,
       'gender': null,
       'nationalities': null,
-      'contactDetails': null,
-      'birthDetails': null,
-      'deathDetails': null
-    });
+      'mobilePhone': null,
+      'homePhone': null,
+      'address': null,
+      'placeofBirth': null,
+      'dateofBirth': null,
+      'placeofDeath': null,
+      'dateofDeath': null
+  });
   }
 }

@@ -33,7 +33,7 @@ export class VehicleComponent implements OnInit {
   private errorMessage;
 
   vin = new FormControl('', Validators.required);
-  vehicleDetails = new FormControl('', Validators.required);
+  make = new FormControl('', Validators.required);
   vehicleStatus = new FormControl('', Validators.required);
   owner = new FormControl('', Validators.required);
   numberPlate = new FormControl('', Validators.required);
@@ -43,7 +43,7 @@ export class VehicleComponent implements OnInit {
   constructor(public serviceVehicle: VehicleService, fb: FormBuilder) {
     this.myForm = fb.group({
       vin: this.vin,
-      vehicleDetails: this.vehicleDetails,
+      make: this.make,
       vehicleStatus: this.vehicleStatus,
       owner: this.owner,
       numberPlate: this.numberPlate,
@@ -107,7 +107,7 @@ export class VehicleComponent implements OnInit {
     this.asset = {
       $class: 'org.vda.Vehicle',
       'vin': this.vin.value,
-      'vehicleDetails': this.vehicleDetails.value,
+      'make': this.make.value,
       'vehicleStatus': this.vehicleStatus.value,
       'owner': this.owner.value,
       'numberPlate': this.numberPlate.value,
@@ -117,7 +117,7 @@ export class VehicleComponent implements OnInit {
 
     this.myForm.setValue({
       'vin': null,
-      'vehicleDetails': null,
+      'make': null,
       'vehicleStatus': null,
       'owner': null,
       'numberPlate': null,
@@ -131,7 +131,7 @@ export class VehicleComponent implements OnInit {
       this.errorMessage = null;
       this.myForm.setValue({
         'vin': null,
-        'vehicleDetails': null,
+        'make': null,
         'vehicleStatus': null,
         'owner': null,
         'numberPlate': null,
@@ -153,7 +153,7 @@ export class VehicleComponent implements OnInit {
   updateAsset(form: any): Promise<any> {
     this.asset = {
       $class: 'org.vda.Vehicle',
-      'vehicleDetails': this.vehicleDetails.value,
+      'make': this.make.value,
       'vehicleStatus': this.vehicleStatus.value,
       'owner': this.owner.value,
       'numberPlate': this.numberPlate.value,
@@ -210,7 +210,7 @@ export class VehicleComponent implements OnInit {
       this.errorMessage = null;
       const formObject = {
         'vin': null,
-        'vehicleDetails': null,
+        'make': null,
         'vehicleStatus': null,
         'owner': null,
         'numberPlate': null,
@@ -224,10 +224,10 @@ export class VehicleComponent implements OnInit {
         formObject.vin = null;
       }
 
-      if (result.vehicleDetails) {
-        formObject.vehicleDetails = result.vehicleDetails;
+      if (result.vehicleDetails.make) {
+        formObject.make = result.vehicleDetails.make;
       } else {
-        formObject.vehicleDetails = null;
+        formObject.make = null;
       }
 
       if (result.vehicleStatus) {
@@ -277,7 +277,7 @@ export class VehicleComponent implements OnInit {
   resetForm(): void {
     this.myForm.setValue({
       'vin': null,
-      'vehicleDetails': null,
+      'make': null,
       'vehicleStatus': null,
       'owner': null,
       'numberPlate': null,
